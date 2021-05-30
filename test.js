@@ -13,9 +13,9 @@ const run = async () => {
   const $radio = await driver.findElement(By.className("check"));
   const $idInput = await driver.findElement(By.id("login_id"));
   const $pwInput = await driver.findElement(By.id("login_pw"));
-  (await $radio).click();
-  (await $idInput).sendKeys("gusdn0217");
-  (await $pwInput).sendKeys("Patent6783!", Key.ENTER);
+  $radio.click();
+  $idInput.sendKeys("gusdn0217");
+  $pwInput.sendKeys("Patent6783!", Key.ENTER);
 
   // 목록 검색
   await driver.wait(until.elementLocated(By.className("row")), 10000);
@@ -26,32 +26,29 @@ const run = async () => {
   // 목록 접속
   let itemList = {};
   let c = 0;
-  await eventList.forEach(async (eventt) => {
-    await eventt.click();
-    console.log("11111111");
-    await driver.wait(until.elementLocated(By.className("row")), 10000);
-    //c++;
-    //let itemList = driver.findElements(By.css(".row > div > table > tr"));
-    //console.log(itemList.length);
-    /*
-    let count = 0;
 
-    if (itemList != undefined) {
-      itemList.forEach((item) => {
-        if (
-          item.findElement(toggleSelector).getAttribute("selected") != undefined
-        ) {
-          count += 1;
-        }
-      });
-    }
-    */
-    console.log("Dsdfsdfsfehlloo");
+  await eventList[0].click();
+  await console.log("Dsdfsdfsfehlloo");
+  let ccc = "/html/body/div[2]/a[1]/span";
+  let t = driver.findElement(By.xpath("/html/body/div[2]/a[1]/span"));
+  await console.log(t.getText());
+
+  /*
+  await eventList.forEach(async (eventt) => {
+    //eventt.click();
+    
+    await console.log("Dsdfsdfsfehlloo");
+    let ccc = "/html/body/div[2]/a[1]/span";
+    let t = driver.findElement(By.xpath("/html/body/div[2]/a[1]/span"));
+    await console.log(t.getText());
+
+    console.log(t.getText());
     await driver.navigate().back();
 
     console.log("????");
     await driver.wait(until.elementLocated(By.className("row")), 10000);
   });
+  */
   //await console.log("SDdssdsfdsfdsfsdfdsfdf");
   //await console.log(c);
 
@@ -65,4 +62,10 @@ const run = async () => {
   }, 3000);
   */
 };
+
+function sleep(ms) {
+  const wakeUpTime = Date.now() + ms;
+  while (Date.now() < wakeUpTime) {}
+}
+
 run();

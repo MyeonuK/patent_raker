@@ -1,0 +1,11 @@
+코드 : 
+await eventList.forEach(async (eventt) => {
+    await eventt.click();
+    await console.log("11111111");
+    await driver.wait(until.elementLocated(By.className("page-content")), 10000);
+
+
+에러 : 
+StaleElementReferenceError: stale element reference: element is not attached to the page document
+
+해결 :
